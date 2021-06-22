@@ -14,22 +14,22 @@ public class Subject implements Serializable {
     private Integer id;
 
     /**
-     * 学科
+     * 学科 name
      */
     private String name;
 
     /**
-     * 大一 ~ 大四  1~4
+     * 大一 ~ 大四  1~4 level
      */
     private Integer level;
 
     /**
-     * 大一 ~ 大四
+     * 大一 ~ 大四 levelName
      */
     private String levelName;
 
     /**
-     * 排序
+     * 排序 itemOrder
      */
     private Integer itemOrder;
 
