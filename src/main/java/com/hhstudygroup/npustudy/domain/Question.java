@@ -25,34 +25,34 @@ public class Question implements Serializable {
      */
     private Integer questionType;
     /**
-     * 学科
+     * 学科 subjectId
      */
     private Integer subjectId;
     /**
-     * 题目总分(千分制)
+     * 题目总分(千分制) score
      */
     private Integer score;
     /**
-     * 级别
+     * 级别 gradeLevel
      */
     private Integer gradeLevel;
     /**
-     * 题目难度
+     * 题目难度 difficult
      */
     private Integer difficult;
 
     /**
-     * 正确答案
+     * 正确答案 correct
      */
     private String correct;
 
     /**
-     * 题目 填空、 题干、解析、答案等信息
+     * 题目 填空、 题干、解析、答案等信息 infoTextContentId
      */
     private Integer infoTextContentId;
 
     /**
-     * 创建人
+     * 创建人 createUser
      */
     private Integer createUser;
 
