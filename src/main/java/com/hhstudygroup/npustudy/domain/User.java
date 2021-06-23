@@ -53,6 +53,9 @@ public class User implements Serializable {
      * 头像地址
      */
     private String imagePath;
+    /**
+     * 创建时间
+     */
     private Date createTime;
     private Date modifyTime;
     private Date lastActiveTime;
