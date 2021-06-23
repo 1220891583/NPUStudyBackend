@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 public class Inbox implements Serializable {
     /**
+     * 邮箱
      * id: int
      * user_id: int
      * total_msg: int
