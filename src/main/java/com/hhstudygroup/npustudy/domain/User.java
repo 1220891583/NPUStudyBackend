@@ -58,6 +58,9 @@ public class User implements Serializable {
      */
     private Date createTime;
     private Date modifyTime;
+    /**
+     * 最近一次登录时间
+     */
     private Date lastActiveTime;
     /**
      * 是否删除
