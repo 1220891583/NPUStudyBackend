@@ -29,7 +29,7 @@ public class Subject implements Serializable {
     private String levelName;
 
     /**
-     * 排序 itemOrder
+     * 排序序号 itemOrder
      */
     private Integer itemOrder;
 
