@@ -4,26 +4,31 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class ExamPaperAnswer implements Serializable {
-    /**
-     * id: int
-     * exam_paper_id: int
-     * system_score: int
-     * user_score: int
-     * paper_score: int
-     * question_correct: int
-     * question_count: int
-     * do_time: int
-     * status: int
-     * create_user: int
-     * create_time: datetime
-     * task_exam_id: int
-     */
-
-    private static final long serialVersionUID = -447501431437432304L;
+    private static final long serialVersionUID = -2143539181805283910L;
 
     private Integer id;
 
     private Integer examPaperId;
+
+    /**
+     * 试卷名称
+     */
+    private String paperName;
+
+    /**
+     * 试卷类型( 1固定试卷 4.时段试卷 6.任务试卷)
+     */
+    private Integer paperType;
+
+    /**
+     * 学科
+     */
+    private Integer subjectId;
+
+    /**
+     * 系统判定得分
+     */
+    private Integer systemScore;
 
     /**
      * 最终得分(千分制)
@@ -67,9 +72,6 @@ public class ExamPaperAnswer implements Serializable {
 
     private Integer taskExamId;
 
-    public static long getSerialVersionUID() {
-        return serialVersionUID;
-    }
 
     public Integer getId() {
         return id;
@@ -85,6 +87,38 @@ public class ExamPaperAnswer implements Serializable {
 
     public void setExamPaperId(Integer examPaperId) {
         this.examPaperId = examPaperId;
+    }
+
+    public String getPaperName() {
+        return paperName;
+    }
+
+    public void setPaperName(String paperName) {
+        this.paperName = paperName == null ? null : paperName.trim();
+    }
+
+    public Integer getPaperType() {
+        return paperType;
+    }
+
+    public void setPaperType(Integer paperType) {
+        this.paperType = paperType;
+    }
+
+    public Integer getSubjectId() {
+        return subjectId;
+    }
+
+    public void setSubjectId(Integer subjectId) {
+        this.subjectId = subjectId;
+    }
+
+    public Integer getSystemScore() {
+        return systemScore;
+    }
+
+    public void setSystemScore(Integer systemScore) {
+        this.systemScore = systemScore;
     }
 
     public Integer getUserScore() {
@@ -157,22 +191,5 @@ public class ExamPaperAnswer implements Serializable {
 
     public void setTaskExamId(Integer taskExamId) {
         this.taskExamId = taskExamId;
-    }
-
-    @Override
-    public String toString() {
-        return "ExamPaperAnswer{" +
-                "id=" + id +
-                ", examPaperId=" + examPaperId +
-                ", userScore=" + userScore +
-                ", paperScore=" + paperScore +
-                ", questionCorrect=" + questionCorrect +
-                ", questionCount=" + questionCount +
-                ", doTime=" + doTime +
-                ", status=" + status +
-                ", createUser=" + createUser +
-                ", createTime=" + createTime +
-                ", taskExamId=" + taskExamId +
-                '}';
     }
 }

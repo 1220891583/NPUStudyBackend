@@ -4,24 +4,8 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class ExamPaper implements Serializable {
-    /**
-     * id: int
-     * name: varchar(255)
-     * subject_id: int
-     * paper_type: int
-     * grade_level: int
-     * score: int
-     * question_count: int
-     * suggest_time: int
-     * limit_start_time: datetime
-     * limit_end_time: datetime
-     * frame_text_content_id: int
-     * create_user: int
-     * create_time: datetime
-     * deleted: bit(1)
-     * task_exam_id: int
-     */
-    private static final long serialVersionUID = -4247069050907466723L;
+
+    private static final long serialVersionUID = 8509645224550501395L;
 
     private Integer id;
 
@@ -81,9 +65,7 @@ public class ExamPaper implements Serializable {
 
     private Boolean deleted;
 
-    public static long getSerialVersionUID() {
-        return serialVersionUID;
-    }
+    private Integer taskExamId;
 
     public Integer getId() {
         return id;
@@ -98,7 +80,7 @@ public class ExamPaper implements Serializable {
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.name = name == null ? null : name.trim();
     }
 
     public Integer getSubjectId() {
@@ -197,23 +179,11 @@ public class ExamPaper implements Serializable {
         this.deleted = deleted;
     }
 
-    @Override
-    public String toString() {
-        return "ExamPaper{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", subjectId=" + subjectId +
-                ", paperType=" + paperType +
-                ", gradeLevel=" + gradeLevel +
-                ", score=" + score +
-                ", questionCount=" + questionCount +
-                ", suggestTime=" + suggestTime +
-                ", limitStartTime=" + limitStartTime +
-                ", limitEndTime=" + limitEndTime +
-                ", frameTextContentId=" + frameTextContentId +
-                ", createUser=" + createUser +
-                ", createTime=" + createTime +
-                ", deleted=" + deleted +
-                '}';
+    public Integer getTaskExamId() {
+        return taskExamId;
+    }
+
+    public void setTaskExamId(Integer taskExamId) {
+        this.taskExamId = taskExamId;
     }
 }

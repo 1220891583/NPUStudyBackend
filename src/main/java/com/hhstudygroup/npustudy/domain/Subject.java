@@ -3,33 +3,28 @@ package com.hhstudygroup.npustudy.domain;
 import java.io.Serializable;
 
 public class Subject implements Serializable {
-    /**
-     * id: int
-     * name: varchar(255)
-     * level: int
-     * level_name: varchar(255)
-     * item_order: int
-     * deleted: bit(1)
-     */
+
+    private static final long serialVersionUID = 8058095034457106501L;
+
     private Integer id;
 
     /**
-     * 学科 name
+     * 语文 数学 英语 等
      */
     private String name;
 
     /**
-     * 大一 ~ 大四  1~4 level
+     * 年级 (1-12) 小学 初中
      */
     private Integer level;
 
     /**
-     * 大一 ~ 大四 levelName
+     * 一年级、二年级等
      */
     private String levelName;
 
     /**
-     * 排序序号 itemOrder
+     * 排序
      */
     private Integer itemOrder;
 
@@ -48,7 +43,7 @@ public class Subject implements Serializable {
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.name = name == null ? null : name.trim();
     }
 
     public Integer getLevel() {
@@ -64,7 +59,7 @@ public class Subject implements Serializable {
     }
 
     public void setLevelName(String levelName) {
-        this.levelName = levelName;
+        this.levelName = levelName == null ? null : levelName.trim();
     }
 
     public Integer getItemOrder() {
@@ -81,17 +76,5 @@ public class Subject implements Serializable {
 
     public void setDeleted(Boolean deleted) {
         this.deleted = deleted;
-    }
-
-    @Override
-    public String toString() {
-        return "Subject{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", level=" + level +
-                ", levelName='" + levelName + '\'' +
-                ", itemOrder=" + itemOrder +
-                ", deleted=" + deleted +
-                '}';
     }
 }

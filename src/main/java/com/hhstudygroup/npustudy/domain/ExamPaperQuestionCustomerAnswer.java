@@ -4,18 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class ExamPaperQuestionCustomerAnswer implements Serializable {
-    /**
-     * id: int
-     * question_id: int
-     * exam_paper_answer_id: int
-     * customer_score: int
-     * question_text_content_id: int
-     * answer: varchar(255)
-     * text_content_id: int
-     * do_right: bit(1)
-     * create_time: datetime
-     * item_order: int
-     */
+
     private static final long serialVersionUID = 3389482731220342366L;
 
     private Integer id;
@@ -29,6 +18,21 @@ public class ExamPaperQuestionCustomerAnswer implements Serializable {
      * 试卷Id
      */
     private Integer examPaperId;
+
+    /**
+     * 答案Id
+     */
+    private Integer examPaperAnswerId;
+
+    /**
+     * 题型
+     */
+    private Integer questionType;
+
+    /**
+     * 学科
+     */
+    private Integer subjectId;
 
     /**
      * 得分
@@ -69,10 +73,6 @@ public class ExamPaperQuestionCustomerAnswer implements Serializable {
 
     private Integer itemOrder;
 
-    public static long getSerialVersionUID() {
-        return serialVersionUID;
-    }
-
     public Integer getId() {
         return id;
     }
@@ -95,6 +95,30 @@ public class ExamPaperQuestionCustomerAnswer implements Serializable {
 
     public void setExamPaperId(Integer examPaperId) {
         this.examPaperId = examPaperId;
+    }
+
+    public Integer getExamPaperAnswerId() {
+        return examPaperAnswerId;
+    }
+
+    public void setExamPaperAnswerId(Integer examPaperAnswerId) {
+        this.examPaperAnswerId = examPaperAnswerId;
+    }
+
+    public Integer getQuestionType() {
+        return questionType;
+    }
+
+    public void setQuestionType(Integer questionType) {
+        this.questionType = questionType;
+    }
+
+    public Integer getSubjectId() {
+        return subjectId;
+    }
+
+    public void setSubjectId(Integer subjectId) {
+        this.subjectId = subjectId;
     }
 
     public Integer getCustomerScore() {
@@ -126,7 +150,7 @@ public class ExamPaperQuestionCustomerAnswer implements Serializable {
     }
 
     public void setAnswer(String answer) {
-        this.answer = answer;
+        this.answer = answer == null ? null : answer.trim();
     }
 
     public Integer getTextContentId() {
@@ -167,23 +191,5 @@ public class ExamPaperQuestionCustomerAnswer implements Serializable {
 
     public void setItemOrder(Integer itemOrder) {
         this.itemOrder = itemOrder;
-    }
-
-    @Override
-    public String toString() {
-        return "ExamPaperQuestionCustomerAnswer{" +
-                "id=" + id +
-                ", questionId=" + questionId +
-                ", examPaperId=" + examPaperId +
-                ", customerScore=" + customerScore +
-                ", questionScore=" + questionScore +
-                ", questionTextContentId=" + questionTextContentId +
-                ", answer='" + answer + '\'' +
-                ", textContentId=" + textContentId +
-                ", doRight=" + doRight +
-                ", createUser=" + createUser +
-                ", createTime=" + createTime +
-                ", itemOrder=" + itemOrder +
-                '}';
     }
 }

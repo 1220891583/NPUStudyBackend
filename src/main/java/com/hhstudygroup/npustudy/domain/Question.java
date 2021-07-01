@@ -1,58 +1,55 @@
 package com.hhstudygroup.npustudy.domain;
 
+import com.hhstudygroup.npustudy.domain.enums.QuestionTypeEnum;
+import com.hhstudygroup.npustudy.utility.ExamUtil;
+
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 public class Question implements Serializable {
-    /**
-     * id: int
-     * question_type: int
-     * subject_id: int
-     * score: int
-     * grade_level: int
-     * difficult: int
-     * correct: text
-     * info_text_content_id: int
-     * create_user: int
-     * status: int
-     * create_time: datetime
-     * deleted: bit(1)
-     */
-    private static final long serialVersionUID = -3859162627766724810L;
+
+    private static final long serialVersionUID = 8826266720383164363L;
+
     private Integer id;
+
     /**
-     * 	1.单选题 2.多选题 3.判断题
+     * 	1.单选题 2.多选题 3.判断题 4.填空题 5.简答题
      */
     private Integer questionType;
+
     /**
-     * 学科 subjectId
+     * 学科
      */
     private Integer subjectId;
+
     /**
-     * 题目总分(千分制) score
+     * 题目总分(千分制)
      */
     private Integer score;
+
     /**
-     * 级别 gradeLevel
+     * 级别
      */
     private Integer gradeLevel;
+
     /**
-     * 题目难度 difficult
+     * 题目难度
      */
     private Integer difficult;
 
     /**
-     * 正确答案 correct
+     * 正确答案
      */
     private String correct;
 
     /**
-     * 题目 填空、 题干、解析、答案等信息 infoTextContentId
+     * 题目 填空、 题干、解析、答案等信息
      */
     private Integer infoTextContentId;
 
     /**
-     * 创建人 createUser
+     * 创建人
      */
     private Integer createUser;
 
@@ -67,10 +64,6 @@ public class Question implements Serializable {
     private Date createTime;
 
     private Boolean deleted;
-
-    public static long getSerialVersionUID() {
-        return serialVersionUID;
-    }
 
     public Integer getId() {
         return id;
@@ -125,7 +118,7 @@ public class Question implements Serializable {
     }
 
     public void setCorrect(String correct) {
-        this.correct = correct;
+        this.correct = correct == null ? null : correct.trim();
     }
 
     public Integer getInfoTextContentId() {
@@ -168,21 +161,14 @@ public class Question implements Serializable {
         this.deleted = deleted;
     }
 
-    @Override
-    public String toString() {
-        return "Question{" +
-                "id=" + id +
-                ", questionType=" + questionType +
-                ", subjectId=" + subjectId +
-                ", score=" + score +
-                ", gradeLevel=" + gradeLevel +
-                ", difficult=" + difficult +
-                ", correct='" + correct + '\'' +
-                ", infoTextContentId=" + infoTextContentId +
-                ", createUser=" + createUser +
-                ", status=" + status +
-                ", createTime=" + createTime +
-                ", deleted=" + deleted +
-                '}';
+
+    public void setCorrectFromVM(String correct, List<String> correctArray) {
+        int qType = this.getQuestionType();
+        if (qType == QuestionTypeEnum.MultipleChoice.getCode()) {
+            String correctJoin = ExamUtil.contentToString(correctArray);
+            this.setCorrect(correctJoin);
+        } else {
+            this.setCorrect(correct);
+        }
     }
 }
